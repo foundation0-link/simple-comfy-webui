@@ -1,0 +1,28 @@
+server:
+  port: 3000
+  comfyuiUrl: "http://localhost:8188"
+
+image:
+  default:
+    width: 1024
+    height: 1024
+  available:
+    widths: [1024,1536]
+    heights: [1024,1536]
+
+workflows:
+  - workflowIdentifier: Txt2Img
+    jsonFile: default_t2i.json
+    enabled: true
+    variables:
+      checkpointName: waiIllustriousSDXL_v160.safetensors
+      samplerName: euler_ancestral
+      steps: 30
+      cfg: 7
+
+polling:
+  intervalMs: 1000
+
+logging:
+  level: INFO
+  timeZone: Asia/Tokyo

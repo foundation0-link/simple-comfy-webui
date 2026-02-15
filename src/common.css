@@ -1,0 +1,331 @@
+/**
+ * グローバル共通スタイル
+ * フォント、カラー変数、リセットなど
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+
+:root {
+    /* カラーパレット */
+    --primary-color: #646cff;
+    --bg-color: #242424;
+    --bg-secondary: #1a1a1a;
+    --text-color: rgba(255, 255, 255, 0.87);
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-bg: #2a2a2a;
+    --hover-bg: #333333;
+    --success-color: #4caf50;
+    --danger-color: #f44336;
+    --warning-color: #ffc107;
+
+    /* UI高さ設定 */
+    --textarea-positive-height: 120px;
+    --textarea-negative-height: 100px;
+
+    /* フォントファミリー */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    --code-font-family: 'Source Code Pro', 'Courier New', monospace;
+}
+
+html {
+    color-scheme: dark;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    min-height: 100vh;
+}
+
+/* ======== ヘッダー ======== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-color);
+    margin: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ======== フォーム要素 ======== */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.1);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* プロンプト入力用フォント */
+#positive-prompt,
+#negative-prompt {
+    font-family: var(--code-font-family);
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
+
+#positive-prompt {
+    height: var(--textarea-positive-height);
+}
+
+#negative-prompt {
+    height: var(--textarea-negative-height);
+}
+
+/* ======== ボタン ======== */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: #5560d4;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+button.secondary {
+    background-color: var(--border-color);
+    color: var(--text-color);
+}
+
+button.secondary:hover {
+    background-color: var(--hover-bg);
+}
+
+button.danger {
+    background-color: var(--danger-color);
+}
+
+button.danger:hover {
+    background-color: #e53935;
+}
+
+button.btn-template {
+    background-color: var(--success-color);
+}
+
+button.btn-template:hover {
+    background-color: #45a049;
+}
+
+button.warning {
+    background-color: var(--warning-color);
+    color: #000;
+}
+
+button.warning:hover {
+    background-color: #ffb300;
+    color: #000;
+}
+
+/* ======== カード/コンテナ ======== */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* ======== ステータスメッセージ ======== */
+.status-message {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+.status-message.active {
+    display: block;
+}
+
+.status-message.success {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.status-message.error {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+}
+
+.status-message.warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: var(--warning-color);
+    border: 1px solid var(--warning-color);
+}
+
+.status-message.info {
+    background-color: rgba(100, 108, 255, 0.1);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+/* ======== ローディング/スピナー ======== */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* ======== レスポンシブ ======== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    body {
+        padding: 0 0.5rem;
+    }
+
+    #app {
+        padding: 1rem 0.5rem;
+    }
+}
+
+/* ======== スクロールバー ======== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-bg);
+}

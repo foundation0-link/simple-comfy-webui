@@ -1,0 +1,191 @@
+{
+    "1": {
+        "inputs": {
+            "value": "{{width}}"
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+            "title": "width"
+        }
+    },
+    "2": {
+        "inputs": {
+            "value": "{{height}}"
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+            "title": "height"
+        }
+    },
+    "3": {
+        "inputs": {
+            "value": "{{steps}}"
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+            "title": "steps"
+        }
+    },
+    "4": {
+        "inputs": {
+            "value": "{{cfg}}"
+        },
+        "class_type": "PrimitiveFloat",
+        "_meta": {
+            "title": "cfg"
+        }
+    },
+    "5": {
+        "inputs": {
+            "value": "{{seed}}"
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+            "title": "seed"
+        }
+    },
+    "6": {
+        "inputs": {
+            "value": "{{positive_prompt}}"
+        },
+        "class_type": "PrimitiveStringMultiline",
+        "_meta": {
+            "title": "Positive Prompt(Input)"
+        }
+    },
+    "7": {
+        "inputs": {
+            "value": "{{negative_prompt}}"
+        },
+        "class_type": "PrimitiveStringMultiline",
+        "_meta": {
+            "title": "Negative Prompt(Input)"
+        }
+    },
+    "10": {
+        "inputs": {
+            "ckpt_name": "{{checkpoint_name}}"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+            "title": "チェックポイントを読み込む"
+        }
+    },
+    "101": {
+        "inputs": {
+            "text": [
+                "6",
+                0
+            ],
+            "clip": [
+                "10",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "Positive Prompt"
+        }
+    },
+    "102": {
+        "inputs": {
+            "text": [
+                "7",
+                0
+            ],
+            "clip": [
+                "10",
+                1
+            ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+            "title": "Negative Prompt"
+        }
+    },
+    "103": {
+        "inputs": {
+            "width": [
+                "1",
+                0
+            ],
+            "height": [
+                "2",
+                0
+            ],
+            "batch_size": 1
+        },
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+            "title": "空の潜在画像"
+        }
+    },
+    "104": {
+        "inputs": {
+            "seed": [
+                "5",
+                0
+            ],
+            "steps": [
+                "3",
+                0
+            ],
+            "cfg": [
+                "4",
+                0
+            ],
+            "sampler_name": "{{sampler_name}}",
+            "scheduler": "normal",
+            "denoise": 1,
+            "model": [
+                "10",
+                0
+            ],
+            "positive": [
+                "101",
+                0
+            ],
+            "negative": [
+                "102",
+                0
+            ],
+            "latent_image": [
+                "103",
+                0
+            ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+            "title": "Kサンプラー"
+        }
+    },
+    "105": {
+        "inputs": {
+            "samples": [
+                "104",
+                0
+            ],
+            "vae": [
+                "10",
+                2
+            ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+            "title": "VAEデコード"
+        }
+    },
+    "901": {
+        "inputs": {
+            "filename_prefix": "API",
+            "images": [
+                "105",
+                0
+            ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+            "title": "画像を保存"
+        }
+    }
+}

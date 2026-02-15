@@ -1,0 +1,24 @@
+{
+    "name": "simple-comfy-webui",
+    "version": "0.1.0",
+    "type": "module",
+    "packageManager": "pnpm@9.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build && tsc src/server/proxy.ts --outDir dist-server --module commonjs --esModuleInterop --downlevelIteration && node scripts/post-build.cjs",
+        "start": "node dist-server/proxy.cjs"
+    },
+    "dependencies": {
+        "express": "^5.2.1",
+        "http-proxy-middleware": "^3.0.5",
+        "ulidx": "^2.4.1"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.6",
+        "@types/js-yaml": "^4.0.9",
+        "@types/node": "^25.2.3",
+        "js-yaml": "^4.1.1",
+        "typescript": "^5.9.3",
+        "vite": "^7.3.1"
+    }
+}
